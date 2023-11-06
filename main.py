@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 #%%
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "my_credentials.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./secrets/my_credentials.json"
 def get_weather_dataset(year):
     """This function runs a query on Google BigQuery from the noaa_gsod datasets and returns a dataframe based on the year.
 
