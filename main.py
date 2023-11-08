@@ -27,7 +27,13 @@ def get_station_data(state):
         pandas.DataFrame: the data that pertains to a particular state
     """
     state_query = """SELECT * FROM `bigquery-public-data.noaa_gsod.stations` WHERE state = :state"""
-    station_data = pd.read_gbq(state_query, credentials = my_credentials)
-    return station_data
+    station_df = pd.read_gbq(state_query, credentials = my_credentials)
+    return station_df
 #%%
 weather_data = {year: get_weather_dataset(year) for year in range(1990, 2024)}
+station_data = get_station_data("IL")
+#%%
+data_collection = []
+for wdf in weather_data:
+    data_collection.append(wdf.join(station_data, on = "wban"))
+weather_data_combined = pd.concat(data_collection)

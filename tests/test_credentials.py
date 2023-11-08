@@ -1,5 +1,6 @@
+from pathlib import Path
 import pytest
-import os
 
 def test_credentials():
-    assert os.environ["GOOGLE_APPLICATION_CREDENTIALS"] is not None
+    credential_path = Path.cwd() / "secrets" / "my_credentials.json"
+    assert credential_path.exists()
