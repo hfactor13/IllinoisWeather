@@ -25,4 +25,3 @@ INNER JOIN `bigquery-public-data.noaa_gsod.stations` AS stations ON gsod{year}.w
 #%%
 # Gather the datasets for the weather of each year from 1990 to 2023
 weather_data = {year: get_weather_dataset(year, "IL") for year in range(1990, 2024)}
-weather_combined = 
