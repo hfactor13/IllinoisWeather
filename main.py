@@ -27,5 +27,7 @@ def get_weather_dataset(start_year, end_year, state):
 #%%
 # Gather the datasets for the weather of each year from 1990 to 2023
 combined_weather_data = get_weather_dataset(1990, 2023, "IL")
+
+# Some data cleanup
 combined_weather_data.replace({999.9: np.nan}, inplace = True)
 combined_weather_data.replace({9999.9: np.nan}, inplace = True)
