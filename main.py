@@ -1,12 +1,14 @@
 #%%
+from pathlib import Path
 import pandas as pd
 import numpy as np
+import tqdm
 import matplotlib.pyplot as plt
 import os
 #%%
-my_credentials = "./secrets/my_credentials.json"
-def get_weather_dataset(year):
-    """This function runs a query on Google BigQuery from the noaa_gsod gsod dataset and returns a dataframe based on the year.
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(Path.cwd() / "secrets" / "my_credentials.json")
+def get_weather_dataset(year, state):
+    """This function runs a query on Google BigQuery from the noaa_gsod gsod dataset and returns a dataframe based on the year. The data is filtered by year and by state.
 
     Args:
         year (int): the year in which we want to obtain the weather data
@@ -14,26 +16,12 @@ def get_weather_dataset(year):
     Returns:
         pandas.DataFrame: the data that pertains to a particular year
     """
-    weather_query = f""" SELECT * FROM `bigquery-public-data.noaa_gsod.gsod{year}` """
-    weather_df = pd.read_gbq(weather_query, credentials = my_credentials)
+    weather_query = f"""
+SELECT * EXCEPT (wban, stn, usaf, country, state, call) FROM `bigquery-public-data.noaa_gsod.gsod{year}` AS gsod{year} 
+INNER JOIN `bigquery-public-data.noaa_gsod.stations` AS stations ON gsod{year}.wban = stations.wban WHERE state = {state}
+"""
+    weather_df = pd.read_gbq(weather_query, progress_bar_type = "tqdm")
     return weather_df
-def get_station_data(state):
-    """This function runs a query on Google BigQuery from the noaa_gsod station dataset and returns a dataframe based on the state.
-
-    Args:
-        state (string): filters the station dataset based on state
-
-    Returns:
-        pandas.DataFrame: the data that pertains to a particular state
-    """
-    state_query = """SELECT * FROM `bigquery-public-data.noaa_gsod.stations` WHERE state = :state"""
-    station_df = pd.read_gbq(state_query, credentials = my_credentials)
-    return station_df
 #%%
-weather_data = {year: get_weather_dataset(year) for year in range(1990, 2024)}
-station_data = get_station_data("IL")
-#%%
-data_collection = []
-for wdf in weather_data:
-    data_collection.append(wdf.join(station_data, on = "wban"))
-weather_data_combined = pd.concat(data_collection)
+# Gather the datasets for the weather of each year from 1990 to 2023
+weather_data = {year: get_weather_dataset(year, "IL") for year in range(1990, 2024)}
