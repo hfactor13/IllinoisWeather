@@ -11,16 +11,18 @@ def get_weather_dataset(start_year, end_year, state):
     """This function runs a query on Google BigQuery from the noaa_gsod gsod dataset and returns a dataframe between a start_year and an end_year. The data is filtered by state.
 
     Args:
-        year (int): the year in which we want to obtain the weather data
+        start_year (int): the starting year in which we want to obtain the weather data
+        end_year (int): the ending year in which we want to obtain the weather data
+        state (str): the initials of the state we want to filter by (i.e. IL, MA, AZ, etc.)
 
     Returns:
         pandas.DataFrame: the data that pertains to a year range and state
     """
     weather_query = f"""
-    SELECT gsod_combined.* EXCEPT (wban, stn, usaf, country, state, call) 
+    SELECT gsod_combined.* 
     FROM `bigquery-public-data.noaa_gsod.gsod*` as gsod_combined
     JOIN `bigquery-public-data.noaa_gsod.stations` AS stations ON gsod_combined.wban = stations.wban 
-    WHERE stations.state = '{state}' AND gsod_combined.year BETWEEN {start_year} AND {end_year};
+    WHERE stations.state = '{state}' AND CAST(gsod_combined.year AS INT64) BETWEEN {start_year} AND {end_year};
     """
     weather_df = pd.read_gbq(weather_query, progress_bar_type = "tqdm")
     return weather_df
