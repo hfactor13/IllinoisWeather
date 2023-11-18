@@ -1,5 +1,5 @@
 *.json
-*.ipynb
+weather_col_comparison.ipynb
 .DS_Store
 __pycache__
 .pytest_cache
