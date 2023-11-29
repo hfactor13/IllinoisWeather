@@ -6,5 +6,5 @@ __pycache__
 .vscode
 ./secrets
 *.pdf
-*.csv
+*.parquet
 *.png
