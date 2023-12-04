@@ -12,7 +12,3 @@
 ### Question Answered?: Yes
 ### 6. Demographically where were the temperatures taken for each station?
 ### Question Answered?: No
-### 7. What was the snow depth over the years?
-### Question Answered?: No
-### 8. What was the amount of snow that has fallen over the years?
-### Question Answered?: No
