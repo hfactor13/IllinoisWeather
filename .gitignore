@@ -1,11 +1,8 @@
 *.json
-weather_col_comparison.ipynb
 .DS_Store
-__pycache__
-.pytest_cache
 .vscode
 ./secrets
 *.pdf
-*.parquet
 *.png
 *.html
+/data
