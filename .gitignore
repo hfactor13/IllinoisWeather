@@ -1,7 +1,7 @@
-*.json
-.DS_Store
 .vscode
-./secrets
+.pytest_cache
+/secrets
+.DS_Store
 *.pdf
 *.png
 *.html
