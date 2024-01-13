@@ -10,5 +10,3 @@
 ### Question Answered? Yes
 ### 5. Out of all the stations, which stations took the least and the most observations?
 ### Question Answered?: Yes
-### 6. Demographically where were the temperatures taken for each station?
-### Question Answered?: No
