@@ -1,8 +1,6 @@
 # Start Here
+The goal of the project is to do some high level exploratory data analysis on the temperature in Illinois. There are many factors to consider when analyzing the weather but this was meant to focus more on temperatures in Illinois.
 
-1. extracting_weather_data.ipynb
-
-2. weather_analysis.ipynb (once step one is ran you don't have to run it again the CSV file is to save on querying charges)
-
-The dataset was extracted from Google BigQuery using the extracting_weather_data.ipynb script which is exported to a CSV file.
-The CSV file is then loaded into a DataFrame for which the exploratory data analysis is done (weather_analysis.ipynb).
+1. The first script `extracting_weather_data.ipynb` extracts the weather data from NOAA's Global Historical Climatology Network Daily datasets (GHCN-D) using Google BigQuery, which is then exported to a CSV format to save on querying charges.
+ 
+2. The second script `weather_analysis.ipynb` focuses on the data cleaning, transformation, and visualization.
