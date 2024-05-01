@@ -1,12 +1,12 @@
 # The purpose of this markdown is to keep track of what questions to ask to gain the most out of the data
 
 ### 1. What is the temperature of Illinois spanning the year 1990 to 2023?
-### Question Answered?: Yes
-### 2. How much does the temperature change from year to year?
-### Question Answered?: Yes
-### 3. How many unique stations are there in Illinois?
-### Question Answered?: Yes
-### 4. For each station, how many observations were taken?
-### Question Answered? Yes
-### 5. Out of all the stations, which stations took the least and the most observations?
-### Question Answered?: Yes
+### See Figure 1
+### 2. What is the moving average temperature over a 3 year and 5 year window respectively?
+### See Figure 2 & 3
+### 3. How large of a temperature gradient was there from year to year?
+### See Figure 4
+### 4. What were the top 10 stations for temperature measurements?
+### See Figure 5
+### 5. What were the top 10 stations between the 25 and 75th percentile?
+### See Figure 6
