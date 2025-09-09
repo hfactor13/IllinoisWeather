@@ -1,7 +1,7 @@
 [project]
 name = "weather"
 version = "0.1.0"
-authors = ["Henry Cuzco <40706933+uiucmeche1317@users.noreply.github.com>"]
+authors = [{ name = "Henry Cuzco", email = "40706933+uiucmeche1317@users.noreply.github.com" }]
 
 [build-system]
 requires = ["hatchling"]
