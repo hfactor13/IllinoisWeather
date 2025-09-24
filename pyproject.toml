@@ -3,10 +3,6 @@ name = "weather"
 version = "0.1.0"
 authors = [{ name = "Henry Cuzco", email = "40706933+hfactor13@users.noreply.github.com" }]
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [tool.pixi.project]
 channels = ["conda-forge", "main", "r", "msys2", "https://repo.anaconda.com/pkgs/main", "https://repo.anaconda.com/pkgs/r"]
 platforms = ["osx-arm64"]
